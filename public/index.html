@@ -76,6 +76,7 @@
         <h3>Arraste seu arquivo Excel ou clique para selecionar</h3>
         <p>O arquivo deve ter os domínios na coluna B</p>
         <input type="file" id="fileInput" accept=".xlsx,.xls">
+        <p id="fileName"></p>
     </div>
     <div class="loading">Processando arquivo...</div>
     <div class="progress"></div>
@@ -144,6 +145,9 @@
         fileInput.addEventListener('change', async (e) => {
             const file = e.target.files[0];
             if (!file) return;
+
+            // Mostra o nome do arquivo imediatamente após a seleção
+            document.getElementById('fileName').textContent = file.name;
 
             console.log('Arquivo selecionado:', file.name);
             const formData = new FormData();
